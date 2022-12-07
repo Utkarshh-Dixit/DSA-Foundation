@@ -1,0 +1,56 @@
+import java.io.; import java.util.;
+
+public class Main {
+
+public static void main(String[] args) throws Exception {
+    
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    int a[][] = new int[n][n];
+    for(int i=0; i<n; i++)
+    {
+        for(int j=0; j<n; j++)
+        {
+            a[i][j] = sc.nextInt();
+        }
+    }
+    
+    int f = 0;
+    for(int i=0; i<n; i++)
+    {
+        int place = 0;
+        int min = a[i][0];
+        for(int j=1; j<n; j++){
+            if(a[i][j] < min)
+            {
+                min = a[i][j];
+                place = j;
+            }
+        }
+        int max = a[0][place];
+        for(int j = 1; j<n; j++)
+        {
+            if(max < a[j][place])
+            {
+                max = a[j][place];
+            }
+        }
+        
+        if(max == min)
+        {
+            f = max;
+            break;
+        }
+    }
+    
+    if(f==0)
+    {
+        System.out.println("Invalid input");
+    }
+    else
+    {
+        System.out.println(f);
+    }
+    
+}
+}
