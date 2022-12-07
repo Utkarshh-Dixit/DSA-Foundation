@@ -1,0 +1,141 @@
+import java.io.; import java.util.;
+
+public class Main {
+
+public static void main(String[] args) throws Exception {
+    
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    int m = sc.nextInt();
+    int a[][] = new int[n][m];
+    
+    
+    for(int i=0; i<n; i++)
+    {
+        for(int j=0; j<m; j++){
+            a[i][j] = sc.nextInt();
+        }
+    }
+    
+    int s = sc.nextInt();
+    int r = sc.nextInt();
+    
+    rotateshell(a, s, r);
+    display(a);
+}
+
+public static void rotateshell(int a[][], int s, int r)
+{
+    int oned[] = fillArrayFromShell(a, s);
+    rotate(oned, r);
+    fillShellFromArray(a, s, oned);
+}
+
+public static void fillShellFromArray(int a[][], int s, int oned[])
+{
+    int minr = s-1;
+    int minc = s-1;
+    int maxr = a.length - s;
+    int maxc = a[0].length - s;
+    
+    
+    int c = 0;
+    for(int i = minr, j = minc; i<= maxr; i++)
+    {
+        a[i][j] = oned[c];
+        c++;
+    }
+     
+    for(int i = maxr, j = minc+1; j<= maxc; j++)
+    {
+        a[i][j] = oned[c];;
+        c++;
+    }
+    for(int i = maxr-1, j = maxc; i>= minr; i--)
+    {
+        a[i][j] = oned[c];
+        c++;
+    }
+    for(int i = minr, j = maxc-1; j>=minc+1; j--)
+    {
+        a[i][j] = oned[c];
+        c++;
+    }
+    
+    
+    
+}
+public static int[] fillArrayFromShell(int a[][], int s)
+{
+    int minr = s-1;
+    int minc = s-1;
+    int maxr = a.length - s;
+    int maxc = a[0].length - s;
+    
+    int sz = 2 * (maxr - minr + maxc - minr);
+    
+    int oned[] = new int[sz];
+    int c = 0;
+    for(int i = minr, j = minc; i<= maxr; i++)
+    {
+        oned[c] = a[i][j];
+        c++;
+    }
+     
+    for(int i = maxr, j = minc+1; j<= maxc; j++)
+    {
+        oned[c] = a[i][j];
+        c++;
+    }
+    for(int i = maxr-1, j = maxc; i>= minr; i--)
+    {
+        oned[c] = a[i][j];
+        c++;
+    }
+    for(int i = minr, j = maxc-1; j>=minc+1; j--)
+    {
+        oned[c] = a[i][j];
+        c++;
+    }
+    
+    return oned;
+}
+
+public static void rotate(int oned[], int r)
+{
+    r = r%oned.length;
+    if(r<0)
+    {
+        r = r + oned.length;
+    }
+    
+    reverse(oned, 0, oned.length - r);
+    reverse(oned, oned.length - r, oned.length);
+    reverse(oned, 0, oned.length);
+}
+
+public static void reverse(int oned[], int start, int end)
+{
+    while(start<end-1)
+    {
+        int temp = oned[start];
+        oned[start] = oned[end-1];
+        oned[end-1] = temp;
+        
+        start++;
+        end--;
+    }
+}
+    
+  
+
+
+public static void display(int[][] arr){
+    for(int i = 0; i < arr.length; i++){
+        for(int j = 0; j < arr[0].length; j++){
+            System.out.print(arr[i][j] + " ");
+        }
+        System.out.println();
+    }
+}
+}
