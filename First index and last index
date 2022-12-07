@@ -1,0 +1,54 @@
+import java.io.; import java.util.;
+
+public class Main{
+
+public static void main(String[] args) throws Exception {
+
+Scanner sc = new Scanner(System.in);
+int n = sc.nextInt();
+int a[] = new int[n];
+for(int i=0; i<n; i++)
+{
+    a[i] = sc.nextInt();
+}
+int d = sc.nextInt();
+int count = 0;
+
+
+int fd = -1;
+int ld = -1;
+
+for(int i = 0; i<n; i++)
+{
+    if(a[i] == d)
+    {
+        if(count == 0)
+        {
+            fd = i;
+            count = 1;
+        }
+        else
+        {
+            ld = i;
+        }
+    }
+    else
+    continue;
+    
+    
+}
+
+if(fd!=-1 && ld == -1)
+{
+    ld = fd;
+}
+else if(fd==-1 && ld == -1)
+{
+    fd = -1;
+    ld = -1;
+}
+System.out.println(fd);
+System.out.println(ld);
+}
+
+}
