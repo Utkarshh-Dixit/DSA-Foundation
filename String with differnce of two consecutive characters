@@ -1,0 +1,34 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static String solution(String str){
+	    
+	    String ans = "";
+	    
+	    for(int i=0; i<str.length(); i++)
+	    {
+	        if(i == str.length()-1)
+	        {
+	            ans += str.charAt(i);
+	            break;
+	        }
+	        int c = (int)str.charAt(i+1) - (int)str.charAt(i);
+	        
+	        String d = Integer.toString(c);
+	        
+	        ans += str.charAt(i) + d;
+	        
+	    }
+	    
+	    return ans;
+
+	}
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		String str = scn.next();
+		System.out.println(solution(str));
+	}
+
+}
