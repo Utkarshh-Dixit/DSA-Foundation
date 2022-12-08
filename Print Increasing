@@ -1,0 +1,26 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int i = 1;
+        printIncreasing(n, i);
+        // write your code here
+    }
+
+    public static void printIncreasing(int n, int i){
+        
+        if(i == n+1)
+        {
+            return;
+        }
+        
+        System.out.println(i);
+        printIncreasing(n, i+1);
+    }
+
+}
