@@ -1,0 +1,31 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static String toggleCase(String str){
+	    
+	    String ans = "";
+	    
+	    for(int i=0; i<str.length(); i++)
+	    {
+	        char ch = str.charAt(i);
+	        if(Character.isLowerCase(ch))
+	        {
+	            ans += Character.toUpperCase(ch);
+	        }
+	        else
+	        {
+	            ans += Character.toLowerCase(ch);
+	        }
+	    }
+	    return ans;
+
+	}
+	public static void main(String[] args) {
+		Scanner scn = new Scanner(System.in);
+		String str = scn.next();
+		System.out.println(toggleCase(str));
+	}
+
+}
