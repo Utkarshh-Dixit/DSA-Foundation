@@ -1,0 +1,46 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        
+        Scanner sc = new Scanner(System.in);
+        String str = sc.next();
+        ArrayList<String> li = getKPC(str);
+        System.out.print(li);
+
+    }
+    
+    static String[] codes = {".;", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vwx", "yz"};
+
+    public static ArrayList<String> getKPC(String str) {
+        
+        if(str.length() == 0)
+        {
+            ArrayList<String> fi = new ArrayList<>();
+            fi.add("");
+            return fi;
+        }
+        
+        char ch = str.charAt(0);
+        String fg = str.substring(1);
+        
+        ArrayList<String> ji = getKPC(fg);
+        ArrayList<String> ki = new ArrayList<>();
+        
+        String cc = codes[ch - '0'];
+        
+        for(int i = 0; i<cc.length(); i++)
+        {
+            char ch2 = cc.charAt(i);
+            for(String rrcc : ji)
+            {
+                ki.add(ch2 + rrcc);
+            }
+        }
+        
+        return ki;
+    }
+
+}
