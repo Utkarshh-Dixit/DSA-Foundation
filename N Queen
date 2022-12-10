@@ -1,0 +1,59 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int chess[][] = new int[n][n];
+        printNQueens(chess, "", 0);
+        
+    }
+
+    public static void printNQueens(int[][] chess, String qsf, int row) {
+        
+        if(row == chess.length)
+        {
+            System.out.println(qsf+".");
+            return;
+        }
+        
+        for(int column = 0; column < chess[0].length; column++)
+        {
+            if(isSafe(chess, row, column) && chess[row][column] == 0)
+            {
+                chess[row][column] = 1;
+                printNQueens(chess, qsf + row + "-" + column + ", ", row+1);
+                chess[row][column] = 0;
+            }
+        }
+        
+    }
+    
+    public static Boolean isSafe(int chess[][], int row, int column)
+    {
+        for(int i = row-1, j = column-1; i>=0 && j>=0; i--, j--)
+        {
+            if(chess[i][j] == 1)
+            return false;
+        }
+        for(int i = row-1, j = column; i>=0; i--)
+        {
+            if(chess[i][j] == 1)
+            return false;
+        }
+        for(int i=row-1, j=column+1; i>=0 && j<chess[0].length; i--,j++)
+        {
+            if(chess[i][j] == 1)
+            return false;
+        }
+        for(int i=row, j=column-1; j>=0; j--)
+        {
+            if(chess[i][j] == 1)
+            return false;
+        }
+        return true;
+    }
+}
