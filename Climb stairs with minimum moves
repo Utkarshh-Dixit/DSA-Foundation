@@ -1,0 +1,41 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        
+        int a[] = new int[n];
+        for(int i=0; i<a.length; i++)
+        {
+            a[i] = sc.nextInt();
+        }
+        Integer arr[] = new Integer[n+1];
+        arr[n] = 0;
+        for(int i=n-1; i>=0; i--)
+        {
+            if(a[i] > 0)
+            {
+                int min = Integer.MAX_VALUE;
+            for(int j=1; j<=a[i] && (i+j) < arr.length; j++)
+            {
+                if(arr[i+j] != null)
+                {
+                    min = Math.min(min, arr[i+j]);
+                }
+            }
+            
+            
+            if(min != Integer.MAX_VALUE)
+            {
+                arr[i] = min+1;
+            }
+            
+            }
+        }
+        System.out.println(arr[0]);
+        
+}
+}
