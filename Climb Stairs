@@ -1,0 +1,39 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int qb[] = new int[n+1];
+        int path = findPath(n, qb);
+        System.out.print(path);
+    }
+    
+    public static int findPath(int n, int qb[])
+    {
+        if(n == 0)
+        {
+            return 1;
+        }
+        if(n<0)
+        {
+            return 0;
+        }
+        if(qb[n] > 0)
+        {
+            return qb[n];
+        }
+        
+        int path1 = findPath(n-1, qb);
+        int path2 = findPath(n-2, qb);
+        int path3 = findPath(n-3, qb);
+        
+        int path = path1 + path2 + path3;
+        
+        qb[n] = path;
+        return path;
+    }
+
+}
