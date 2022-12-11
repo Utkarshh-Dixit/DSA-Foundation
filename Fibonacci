@@ -6,27 +6,26 @@ public class Main{
 public static void main(String[] args) throws Exception {
     Scanner sc = new Scanner(System.in);
     int n = sc.nextInt();
-    int a = 0;
-    int b = 1;
-    if(n == 0)
-    System.out.print(a);
-    else if(n==1)
-    System.out.print(1);
-    else
-    {
-    printFibo(n, a, b, a+b);
-    }
+    int qb[] = new int[n+1];
+    int fibn = fibMemorized(n, qb);
+    System.out.println(fibn);
  }
  
- public static void printFibo(int n, int a, int b, int c)
+ public static int fibMemorized(int n, int qb[])
  {
-     if(n == 2)
+     if(n == 0 || n == 1)
      {
-         System.out.print(c);
-         return;
+         return n;
      }
+     if(qb[n] != 0)
+     {
+         return qb[n];
+     }
+     int fibnm1 = fibMemorized(n-1, qb);
+     int fibnm2 = fibMemorized(n-2, qb);
+     int fibn = fibnm1 + fibnm2;
      
-     printFibo(n-1, b, c, b+c);
+     return fibn;
  }
 
 }
