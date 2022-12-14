@@ -1,0 +1,22 @@
+import java.io.*;
+import java.util.*;
+
+public class Main{
+
+public static void main(String[] args) throws Exception {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    int dpz[] = new int[n+1];
+    int dpo[] = new int[n+1];
+    dpz[1] = 1;
+    dpo[1] = 1;
+    for(int i=2; i<n+1; i++)
+    {
+        dpo[i] = dpo[i-1] + dpz[i-1];
+        dpz[i] = dpo[i-1];
+    }
+    System.out.println(dpo[n] + dpz[n]);
+    
+ }
+
+}
