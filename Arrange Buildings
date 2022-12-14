@@ -1,0 +1,23 @@
+import java.io.*;
+import java.util.*;
+
+public class Main{
+
+public static void main(String[] args) throws Exception {
+    Scanner sc = new Scanner(System.in);
+    long n = sc.nextInt();
+    long b = 1;
+    long r = 1;
+    
+    for(int i=2; i<=n; i++)
+    {
+        long nb = r;
+        long nr = r + b;
+        
+        b = nb;
+        r = nr;
+    }
+    System.out.print((b+r)*(b+r));
+ }
+
+}
