@@ -1,0 +1,49 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int a[] = new int[n];
+        for(int i=0; i<n; i++)
+        {
+            a[i] = sc.nextInt();
+        }
+        int f = sc.nextInt();
+        
+        int bsp = -a[0];
+        int ssp = 0;
+        int sum = 0;
+        for(int i=1; i<n; i++)
+        {
+            int nbsp = 0;
+            int nssp = 0;
+            
+            if(ssp - a[i] > bsp)
+            {
+                nbsp = ssp - a[i];
+            }
+            else
+            {
+                nbsp = bsp;
+            }
+            
+            if(bsp + a[i] - f > ssp)
+            {
+                nssp = bsp + a[i] - f;
+            }
+            else
+            {
+                nssp = ssp;
+            }
+            
+            bsp = nbsp;
+            ssp = nssp;
+        }
+        
+        System.out.println(ssp);
+    }
+
+}
